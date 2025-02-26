@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Moment_3_EF.Models.WritersModel>
+
+@{
+	ViewData["Title"] = "Alla författare";
+}
+
+<h2 class="text-center my-5">Författare</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var writer in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => writer.Name)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@writer.Id">Ändra</a> |
+					<a asp-action="Details" asp-route-id="@writer.Id">Detaljer</a> |
+					<a asp-action="Delete" asp-route-id="@writer.Id">Radera</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<p class="mt-4">
+	<a asp-action="Create">Lägg till ny författare</a>
+</p>

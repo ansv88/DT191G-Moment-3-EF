@@ -1,0 +1,30 @@
+﻿@model Moment_3_EF.Models.WritersModel
+
+@{
+    ViewData["Title"] = "Författardetaljer";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <h3>Böcker av denna författare:</h3>
+    <hr />
+    @if (Model.Books.Any())
+    {
+        <ul>
+            @foreach (var book in Model.Books)
+            {
+                <li>@book.Title</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Denna författare har inga registrerade böcker.</p>
+    }
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> |
+    <a asp-action="Index">Tillbaka till författarlistan</a>
+</div>

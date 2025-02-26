@@ -1,0 +1,48 @@
+﻿@model Moment_3_EF.ViewModels.BookCreateViewModel
+
+@{
+    ViewData["Title"] = "Lägg till en bok";
+}
+
+<h2>Lägg till</h2>
+
+<h3>Lägg till en bok</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="WriterId" class="control-label">Välj en författare</label>
+                <select asp-for="WriterId" class ="form-control" asp-items="ViewBag.Writers">
+                    <option value="">-- Välj en författare --</option>
+                </select>
+                <span asp-validation-for="WriterId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NewWriterName">Eller skriv in en ny författare</label>
+                <input asp-for="NewWriterName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Spara" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Tillbaka till listan</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

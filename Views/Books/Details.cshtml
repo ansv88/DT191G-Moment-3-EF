@@ -1,0 +1,30 @@
+﻿@model Moment_3_EF.Models.BooksModel
+
+@{
+    ViewData["Title"] = "Bokdetaljer";
+}
+
+<h2>Detaljer</h2>
+
+<div>
+    <h3>Bokdetaljer</h3>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Writer)
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.Writer != null ? Model.Writer.Name : "Okänd författare")
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> |
+    <a asp-action="Index">Tillbaka till boklistan</a>
+</div>

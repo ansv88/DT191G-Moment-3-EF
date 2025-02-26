@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Moment_3_EF.Models.BooksModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2 class="text-center my-5">Mina böcker</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Title)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Writer)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Title)
+				</td>
+				<td>
+					@if (item.Writer != null)
+					{
+						@Html.DisplayFor(modelItem => item.Writer.Name)
+					}
+					else
+					{
+						<span>Okänd författare</span>
+					}
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
+					<a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
+					<a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<p class="mt-4">
+	<a asp-action="Create">Lägg till ny bok</a>
+</p>
